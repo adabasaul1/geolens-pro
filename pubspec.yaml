@@ -1,0 +1,77 @@
+name: geolens_pro
+description: >
+  GeoLens Pro — Herramienta de identificación petrográfica offline
+  para geólogos en Ecuador. Clasificación IUGS con referenciación
+  a formaciones del Mapa Geológico Nacional (IIGE).
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # ── Base de datos local (SQLite) ───────────────────────────────
+  sqflite: ^2.3.2
+  path: ^1.9.0
+  path_provider: ^2.1.2
+
+  # ── Inferencia offline (TensorFlow Lite) ──────────────────────
+  tflite_flutter: ^0.10.4
+  tflite_flutter_helper: ^0.3.1   # preprocessing de imágenes
+
+  # ── Cámara y galería ──────────────────────────────────────────
+  camera: ^0.10.5+9
+  image_picker: ^1.0.7
+  image: ^4.1.7                   # procesamiento en Dart
+
+  # ── Geolocalización WGS-84 / UTM ─────────────────────────────
+  geolocator: ^11.0.0
+  latlong2: ^0.9.0                # conversiones geodésicas
+  proj4dart: ^2.1.0               # proyecciones UTM Zona 17N/17S/18S
+
+  # ── UI / SVG ─────────────────────────────────────────────────
+  flutter_svg: ^2.0.10+1          # diagramas QAPF y TAS en SVG
+  google_fonts: ^6.2.1
+  fl_chart: ^0.67.0               # gráficos complementarios
+
+  # ── Persistencia de campo ─────────────────────────────────────
+  shared_preferences: ^2.2.3
+  uuid: ^4.4.0                    # ID único por muestra
+  intl: ^0.19.0                   # formato de fechas
+
+  # ── Exportación PDF ───────────────────────────────────────────
+  pdf: ^3.10.8
+  printing: ^5.12.0
+
+  # ── Utilidades ───────────────────────────────────────────────
+  provider: ^6.1.2                # gestión de estado
+  logger: ^2.3.0
+  equatable: ^2.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  build_runner: ^2.4.9
+  mockito: ^5.4.4
+
+flutter:
+  uses-material-design: true
+
+  # Assets embebidos (modelo TFLite + base de conocimiento SVG)
+  assets:
+    - assets/models/
+    - assets/diagrams/
+    - assets/icons/
+    - assets/fonts/
+
+  fonts:
+    - family: JetBrainsMono
+      fonts:
+        - asset: assets/fonts/JetBrainsMono-Regular.ttf
+        - asset: assets/fonts/JetBrainsMono-Bold.ttf
+          weight: 700
